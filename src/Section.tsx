@@ -40,7 +40,7 @@ export function Section({
         </span>
       </div>
       <div
-        className={`mx-20 pt-40 px-4 bg-gradient-to-b from-gray-950 from-5% via-${color} to-95% to-gray-950`}
+        className={`mx-20 pt-40 px-4 bg-gradient-to-b from-gray-950 from-5% ${color} to-95% to-gray-950`}
       >
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto itaque
         eaque nam quos rem? Iste officiis aliquid expedita officia cupiditate

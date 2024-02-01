@@ -18,7 +18,7 @@ function MenuItem({
   return (
     <ScrollIntoView selector={selector}>
       <button
-        className={`text-5xl font-semibold text-${color}-900 hover:text-${color}-700 hover:scale-110 transition duration-150 ease hover:underline`}
+        className={`text-5xl font-semibold ${color} hover:opacity-70 hover:scale-110 transition duration-150 ease hover:underline`}
       >
         {children}
       </button>
@@ -42,6 +42,7 @@ function App() {
         setScale(true);
       } else {
         setScale(false);
+        ``;
       }
       // Perform actions on scroll
     }, 100);
@@ -59,7 +60,7 @@ function App() {
           className={clx(
             'cursor-pointer m-8 flex align-top w-1/2 h-screen translate-x-72 transition duration-[1.5s]',
             {
-              'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-48  ':
+              'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
                 scale,
               'scale-75 scale-x-150': !scale,
             }
@@ -70,7 +71,7 @@ function App() {
 
         <div
           className={clx('m-8 lg:flex w-100 transition duration-[2s]', {
-            'lg:scale-[0.4] lg:-translate-y-72 lg:translate-x-32': scale,
+            'lg:scale-[0.4] lg:-translate-y-1/3 lg:translate-x-32': scale,
             'scale-100': !scale,
             hidden: !drawerOpen,
             'fixed right-0': drawerOpen,
@@ -100,13 +101,13 @@ function App() {
               </button>
             </div>
 
-            <MenuItem selector="#section-1" color="red">
+            <MenuItem selector="#section-1" color="text-red-900">
               Sessions
             </MenuItem>
-            <MenuItem selector="#section-2" color="amber">
+            <MenuItem selector="#section-2" color="text-amber-900">
               Help with your project
             </MenuItem>
-            <MenuItem selector="#section-3" color="red">
+            <MenuItem selector="#section-3" color="text-red-900">
               My other charms
             </MenuItem>
           </div>
@@ -154,9 +155,9 @@ function App() {
         </nav>
       </div>
 
-      <Section title="section-1" color="red-900"></Section>
-      <Section invert title="section-2" color="amber-900"></Section>
-      <Section title="section-3" color="red-900"></Section>
+      <Section title="section-1" color="via-red-900"></Section>
+      <Section invert title="section-2" color="via-amber-900"></Section>
+      <Section title="section-3" color="via-red-900"></Section>
 
       <footer className="flex h-40">
         <h2 className="text-red-700">CONTACT ME</h2>
