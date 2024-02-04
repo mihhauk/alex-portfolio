@@ -2,33 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import ScrollIntoView from 'react-scroll-into-view';
 import clx from 'classnames';
 
-import logo from '../src/assets/alex-loogo-PhotoRoom.png';
+import logo from '../src/assets/Axdt-Logo-White.svg';
+import portrait from '../src/assets/A-berlin-cape-1.webp';
 import { Section } from './Section';
 import throttle from 'lodash/throttle';
-
-function MenuItem({
-  children,
-  selector,
-  color,
-}: {
-  children: string;
-  selector: string;
-  color: string;
-}) {
-  return (
-    <ScrollIntoView selector={selector}>
-      <button
-        className={`text-5xl font-semibold ${color} hover:opacity-70 hover:scale-110 transition duration-150 ease hover:underline`}
-      >
-        {children}
-      </button>
-    </ScrollIntoView>
-  );
-}
+import Menu from './Menu';
 
 function App() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
   const headerRef = useRef(null);
 
   const [scale, setScale] = useState(false);
@@ -38,7 +18,7 @@ function App() {
     const handleScroll = throttle(() => {
       if (!headerRef.current) return;
 
-      if (window.scrollY > window.innerHeight / 2.6) {
+      if (window.scrollY > 50) {
         setScale(true);
       } else {
         setScale(false);
@@ -53,116 +33,64 @@ function App() {
   }, []);
 
   return (
-    <header className="mx-auto">
-      <div className="fixed top-0 flex justify-between">
-        <ScrollIntoView
-          selector="#home"
-          className={clx(
-            'cursor-pointer m-8 flex align-top w-1/2 h-screen translate-x-72 transition duration-[1.5s]',
-            {
-              'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
-                scale,
-              'scale-75 scale-x-150': !scale,
-            }
-          )}
-        >
-          <img src={logo} alt="logoo" ref={headerRef}></img>
-        </ScrollIntoView>
-
+    <div id="home" className="mx-auto max-w-screen-xl">
+      <header className={clx('h-0 sticky top-0')}>
         <div
-          className={clx('m-8 lg:flex w-100 transition duration-[2s]', {
-            'lg:scale-[0.4] lg:-translate-y-1/3 lg:translate-x-32': scale,
-            'scale-100': !scale,
-            hidden: !drawerOpen,
-            'fixed right-0': drawerOpen,
+          className={clx('flex justify-between items-start pt-10 bg-gray-950', {
+            'border-b-2 border-gray-900': scale,
           })}
         >
-          <div className={`flex-col flex gap-y-10`}>
-            <div className="lg:hidden flex justify-end">
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(false)}
-                className="-m-2.5 rounded-md text-red-900 justify-end"
-              >
-                <svg
-                  className="h-10 w-10"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <MenuItem selector="#section-1" color="text-red-900">
-              Sessions
-            </MenuItem>
-            <MenuItem selector="#section-2" color="text-amber-900">
-              Help with your project
-            </MenuItem>
-            <MenuItem selector="#section-3" color="text-red-900">
-              My other charms
-            </MenuItem>
-          </div>
-        </div>
-
-        <div className="flex justify-end pe-5 pt-10 h-10 lg:hidden">
-          <button
-            type="button"
-            onClick={() => setDrawerOpen(true)}
+          <ScrollIntoView
+            selector="#home"
             className={clx(
-              '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-red-700',
+              'cursor-pointer mx-40 flex align-top h-32 transition duration-[1.5s]',
+              // 'translate-x-[200%] translate-y-[200%]',
               {
-                hidden: drawerOpen,
+                'translate-x-[30%] translate-y-[70%] scale-[250%]': !scale,
+                // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+                //   scale,
+                // 'scale-75 scale-x-150': !scale,
               }
             )}
           >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-10 w-10"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </button>
+            <img src={logo} alt="logoo" ref={headerRef}></img>
+          </ScrollIntoView>
+          <Menu scale={scale} />
         </div>
-      </div>
-      <div id="home" className={`m-8 h-screen`}>
-        <div className="h-screen flex items-start p-20 w-1/2 max-con">
-          <span className="text-7xl text-slate-500 ">HERE HERE,</span>
-          <span className="text-7xl text-slate-500">Come to me...</span>
-        </div>
-        <nav
-          className="hidden lg:flex w-2/5 items-start justify-end p-6 lg:px-8"
-          aria-label="Global"
-        >
-          <div></div>
-        </nav>
+      </header>
+      <div className={`h-screen flex items-end`}>
+        <span className="text-lg p-10 w-2/3 text-slate-500 mb-40">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum a
+          necessitatibus aut magnam inventore perferendis, expedita dignissimos,
+          possimus ducimus cum mollitia id ab facere rerum aliquid, cumque ullam
+          sequi consequatur.
+        </span>
+        <img
+          src={portrait}
+          alt="portrait"
+          ref={headerRef}
+          className={clx(
+            //todo: shadow
+            'mb-10 mx-10 h-2/3 flex justify-center transition duration-[0.5s]  delay-500 origin-bottom object-contain rounded-md',
+            // 'translate-x-[200%] translate-y-[200%]',
+            {
+              // 'opacity-0': scale,
+              // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+              //   scale,
+              // 'scale-75 scale-x-150': !scale,
+            }
+          )}
+        ></img>
       </div>
 
-      <Section title="section-1" color="via-red-900"></Section>
-      <Section invert title="section-2" color="via-amber-900"></Section>
-      <Section title="section-3" color="via-red-900"></Section>
+      <Section title="section-1" color="via-red-950"></Section>
+      <Section invert title="section-2" color="via-amber-950"></Section>
+      <Section title="section-3" color="via-red-950"></Section>
 
       <footer className="flex h-40">
         <h2 className="text-red-700">CONTACT ME</h2>
       </footer>
-    </header>
+    </div>
   );
 }
 
