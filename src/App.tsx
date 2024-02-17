@@ -8,6 +8,7 @@ import { Section } from './Section';
 import throttle from 'lodash/throttle';
 import Menu from './Menu';
 import { ContactForm } from './ContactForm';
+import { Card } from './components/ui/card';
 
 function App() {
   const headerRef = useRef(null);
@@ -87,16 +88,16 @@ function App() {
       <Section title="section-1" color="via-red-950"></Section>
       <Section invert title="section-2" color="via-amber-950"></Section>
       <Section title="section-3" color="via-red-950"></Section>
-      <div className="grid grid-cols-2 auto-rows-min gap-10 p-20 h-1/2">
-        <ContactForm />
-        <div className="max-h-min">
+      <div className="grid lg:grid-cols-2 auto-rows-min gap-10 p-20 h-1/2">
+        <Card>
           <img
             src={portrait}
             alt="portrait"
             ref={headerRef}
-            className={clx('h-full w-full object-contain rounded-md')}
+            className={clx('h-full w-full')}
           ></img>
-        </div>
+        </Card>
+        <ContactForm />
       </div>
 
       <footer className="flex">FOOTER</footer>
