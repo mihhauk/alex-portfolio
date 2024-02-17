@@ -7,6 +7,7 @@ import portrait from '../src/assets/A-berlin-cape-1.webp';
 import { Section } from './Section';
 import throttle from 'lodash/throttle';
 import Menu from './Menu';
+import { Contact } from './Contact';
 
 function App() {
   const headerRef = useRef(null);
@@ -86,10 +87,9 @@ function App() {
       <Section title="section-1" color="via-red-950"></Section>
       <Section invert title="section-2" color="via-amber-950"></Section>
       <Section title="section-3" color="via-red-950"></Section>
+      <Contact />
 
-      <footer className="flex h-40">
-        <h2 className="text-red-700">CONTACT ME</h2>
-      </footer>
+      <footer className="flex">FOOTER</footer>
     </div>
   );
 }
