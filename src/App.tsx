@@ -17,14 +17,20 @@ import { OfferCard } from './OfferCard';
 function App() {
   const headerRef = useRef(null);
 
-  const [scale, setScale] = useState(window.scrollY > 50);
+  const [scale, setScale] = useState(true);
 
   useEffect(() => {
+    // if (window.scrollY > 50) {
+    //   setScale(true);
+    // } else {
+    //   setScale(false);
+    //   ``;
+    // }
     // const debouncedFunction = debounce(originalFunction, waitMilliseconds, options);
     const handleScroll = throttle(() => {
       if (!headerRef.current) return;
 
-      if (window.scrollY > 50) {
+      if (window.scrollY > window.innerHeight / 2) {
         setScale(true);
       } else {
         setScale(false);
@@ -42,30 +48,84 @@ function App() {
     <div id="home" className="mx-auto max-w-screen-xl">
       <header className={clx('h-0 sticky top-0')}>
         <div
-          className={clx('flex justify-between items-start pt-5', {
-            'bg-gray-950 border-b-2 border-gray-900': scale,
-          })}
+          className={clx(
+            'grid grid-cols-2 h-32 justify-between pt-5 px-10 transition duration-1000',
+            {
+              'bg-gray-950 border-b-2 border-gray-900': scale,
+              // 'grid-cols-2': scale,
+              // 'grid-cols-1 h-screen': !scale,
+            }
+          )}
         >
+          {/* <div
+            className={clx(
+              'px-20 absolute top-0 right-0 w-full h-screen'
+
+              // {
+              //   'scale-[0.2]': scale,
+              //   // 'align-top': scale,
+              //   // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+              //   //   scale,
+              //   // 'scale-75 scale-x-150': !scale,
+              // }
+            )}
+          > */}
           <ScrollIntoView
             selector="#home"
-            className={clx(
-              'cursor-pointer mx-40 flex align-top h-24 transition duration-[1.5s]',
-              // 'translate-x-[200%] translate-y-[200%]',
-              {
-                'translate-x-[20vw] translate-y-[50vh] scale-[500%]': !scale,
-                // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
-                //   scale,
-                // 'scale-75 scale-x-150': !scale,
-              }
-            )}
+            className={clx({
+              'opacity-0': !scale,
+              // 'scale-[2] md:scale-[5] translate-y-[40vh]': !scale,
+              // 'cursor-pointer': scale,
+              // 'align-top': scale,
+              // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+              //   scale,
+              // 'scale-75 scale-x-150': !scale,
+            })}
           >
-            <img src={logo} alt="logoo" ref={headerRef}></img>
+            <img
+              src={logo}
+              alt="logoo"
+              ref={headerRef}
+              className={clx(
+                'h-24 transition duration-1000',
+
+                {
+                  // 'row-start-2': !scale,
+                  // 'scale-[2] md:scale-[5]': !scale,
+                  // 'cursor-pointer': scale,
+                  // 'align-top': scale,
+                  // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+                  //   scale,
+                  // 'scale-75 scale-x-150': !scale,
+                }
+              )}
+            ></img>
           </ScrollIntoView>
           <Menu scale={scale} />
         </div>
+        {/* </div> */}
       </header>
       {/* class="bg-[url('/img/hero-pattern.svg')]" */}
-      <div className={`h-screen bg-home-page bg-no-repeat bg-cover`}>
+      <div
+        className={`h-screen bg-home-page bg-no-repeat bg-cover bg-center flex justify-center`}
+      >
+        <img
+          src={logo}
+          alt="logoo"
+          className={clx(
+            'w-1/2 h-full',
+
+            {
+              // 'row-start-2': !scale,
+              // 'scale-[2] md:scale-[5]': !scale,
+              // 'cursor-pointer': scale,
+              // 'align-top': scale,
+              // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
+              //   scale,
+              // 'scale-75 scale-x-150': !scale,
+            }
+          )}
+        ></img>
         {/* <span className="text-lg p-10 w-2/3 text-slate-500 mb-40">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum a
           necessitatibus aut magnam inventore perferendis, expedita dignissimos,
@@ -90,8 +150,8 @@ function App() {
         ></img> */}
       </div>
       <div id="mission" className="flex flex-col mb-40 mt-10">
-        <h2 className="mx-auto text-8xl text-slate-100">My Mission</h2>
-        <p className="text-4xl text-slate-300 mt-10 mx-20 text-center">
+        <h2 className="mx-auto text-8xl text-slate-100">Why Dramaturgy?</h2>
+        <p className="text-3xl text-slate-300 mt-10 mx-20 text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aut rem
           sequi cumque odio, blanditiis, cupiditate ab optio dolores inventore
           ducimus quia veniam fugit, iusto quisquam maiores harum explicabo
@@ -156,7 +216,11 @@ function App() {
         <ContactForm />
       </div>
 
-      <footer className="flex">FOOTER</footer>
+      <footer className="flex justify-end p-4">
+        <span className="text-white">
+          * All images on the site are mine and only mine!!! Blan, balah
+        </span>
+      </footer>
     </div>
   );
 }

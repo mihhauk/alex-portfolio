@@ -26,7 +26,7 @@ function Menu({ scale }: { scale: boolean }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <div>
+    <div className="justify-self-end">
       <nav
         className={clx('mt-4 mb-2 lg:flex w-100 text-right', {
           hidden: !drawerOpen,
