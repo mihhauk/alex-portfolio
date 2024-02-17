@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
     "react-scroll-into-view": "^2.1.1",
+    "react-use": "^17.5.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "ts-debounce": "^4.0.0",

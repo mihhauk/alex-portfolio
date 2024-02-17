@@ -22,14 +22,17 @@ export function OfferCard({
 }) {
   return (
     <Card
-      className={clx('flex flex-col bg-gray-300  border-slate-300', className)}
+      className={clx(
+        'flex flex-col bg-slate-200  border-red-900 border-2',
+        className
+      )}
     >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
 
       <CardContent className="flex flex-col grow">
-        <img className="w-full h-40 object-cover rounded-md" src={photo}></img>
+        <img className="w-full h-64 object-cover rounded-md" src={photo}></img>
         <div className="my-10">{children}</div>
       </CardContent>
       <CardFooter className="flex justify-end">

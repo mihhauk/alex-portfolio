@@ -34,7 +34,7 @@ const formSchema = z.object({
     .max(500, 'Must be less than 500 characters'),
 });
 
-export function ContactForm() {
+export function ContactForm({ id }: { id?: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -71,7 +71,11 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="p-2 bg-gray-300  border-slate-300 ">
+    <Card
+      className="p-2 bg-slate-200  border-red-900 border-2 relative -z-10
+    "
+    >
+      <div id={id} className="absolute -top-40 left-0"></div>
       <Form {...form}>
         <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)}>
           <CardHeader>

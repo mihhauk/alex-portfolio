@@ -14,18 +14,36 @@ import { ContactForm } from './ContactForm';
 import { Card } from './components/ui/card';
 import { OfferCard } from './OfferCard';
 
+// import { createBreakpoint } from 'react-use';
+// import tailwindTheme from 'tailwindcss/defaultTheme';
+
+// export const breakpoints = {
+//   phone: 0,
+//   tablet: Number.parseInt(tailwindTheme.screens.md),
+//   laptop: Number.parseInt(tailwindTheme.screens.lg),
+//   desktop: Number.parseInt(tailwindTheme.screens.xl),
+// };
+
+// const useBreakpoint = createBreakpoint(
+//   breakpoints
+// ) as () => keyof typeof breakpoints;
+
+// export  useBreakpoint;
+
 function App() {
   const headerRef = useRef(null);
 
-  const [scale, setScale] = useState(true);
+  const [scale, setScale] = useState(false);
+
+  // const breakpoints = useBreakpoint();
 
   useEffect(() => {
-    // if (window.scrollY > 50) {
-    //   setScale(true);
-    // } else {
-    //   setScale(false);
-    //   ``;
-    // }
+    if (window.scrollY > window.innerHeight / 2) {
+      setScale(true);
+    } else {
+      setScale(false);
+      ``;
+    }
     // const debouncedFunction = debounce(originalFunction, waitMilliseconds, options);
     const handleScroll = throttle(() => {
       if (!headerRef.current) return;
@@ -49,7 +67,7 @@ function App() {
       <header className={clx('h-0 sticky top-0')}>
         <div
           className={clx(
-            'grid grid-cols-2 h-32 justify-between pt-5 px-10 transition duration-1000',
+            'grid grid-cols-2 h-32 justify-between pt-5 px-5 transition duration-1000',
             {
               'bg-gray-950 border-b-2 border-gray-900': scale,
               // 'grid-cols-2': scale,
@@ -87,7 +105,7 @@ function App() {
               alt="logoo"
               ref={headerRef}
               className={clx(
-                'h-24 transition duration-1000',
+                'h-24 cursor-pointer',
 
                 {
                   // 'row-start-2': !scale,
@@ -113,7 +131,7 @@ function App() {
           src={logo}
           alt="logoo"
           className={clx(
-            'w-1/2 h-full',
+            'md:w-1/2 px-5 h-full',
 
             {
               // 'row-start-2': !scale,
@@ -149,9 +167,11 @@ function App() {
           )}
         ></img> */}
       </div>
-      <div id="mission" className="flex flex-col mb-40 mt-10">
-        <h2 className="mx-auto text-8xl text-slate-100">Why Dramaturgy?</h2>
-        <p className="text-3xl text-slate-300 mt-10 mx-20 text-center">
+      <div id="mission" className="flex flex-col">
+        <h2 className="mx-auto text-5xl lg:text-8xl text-slate-100 pt-40">
+          Why Dramaturgy?
+        </h2>
+        <p className="text-xl lg:text-3xl text-slate-300 mt-10 mx-20 text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aut rem
           sequi cumque odio, blanditiis, cupiditate ab optio dolores inventore
           ducimus quia veniam fugit, iusto quisquam maiores harum explicabo
@@ -161,8 +181,10 @@ function App() {
           dolorum excepturi voluptatem ut! Impedit, maxime.
         </p>
       </div>
-      <div id="offer" className="flex flex-col mb-5">
-        <h2 className="mx-auto text-8xl text-slate-100">My offer</h2>
+      <div id="offer" className="flex flex-col">
+        <h2 className="mx-auto text-5xl lg:text-8xl text-slate-100 pt-40">
+          My offer
+        </h2>
         <div className="grid lg:grid-cols-3 gap-10 p-10">
           <OfferCard
             title="Resolution based"
@@ -202,18 +224,18 @@ function App() {
       <Section invert title="section-2" color="via-amber-950"></Section>
       <Section title="section-3" color="via-red-950"></Section> */}
       <div
-        id="contact"
-        className="grid lg:grid-cols-2 auto-rows-min gap-10 p-20 h-1/2"
+        // id={breakpoints === 'desktop' ? undefined : 'contact'}
+        className="grid lg:grid-cols-2 auto-rows-min gap-10 px-10 lg:px-20 py-40 h-1/2"
       >
-        <Card>
+        <Card className="bg-slate-300 border-red-900 border-2">
           <img
             src={portrait}
             alt="portrait"
             ref={headerRef}
-            className={clx('h-full w-full')}
+            className={clx('h-full w-full p-1 object-fill  ')}
           ></img>
         </Card>
-        <ContactForm />
+        <ContactForm id={'contact'} />
       </div>
 
       <footer className="flex justify-end p-4">
