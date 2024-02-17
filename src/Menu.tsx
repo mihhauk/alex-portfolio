@@ -12,7 +12,7 @@ function MenuItem({
   color: string;
 }) {
   return (
-    <ScrollIntoView selector={selector}>
+    <ScrollIntoView selector={selector} scrollOptions={{ block: 'center' }}>
       <button
         className={`text-xl font-semibold menu-item ${color} text-white hover:opacity-70 hover:scale-110 transition duration-150 ease`}
       >
@@ -28,7 +28,7 @@ function Menu({ scale }: { scale: boolean }) {
   return (
     <div>
       <nav
-        className={clx('m-8 lg:flex w-100 text-right', {
+        className={clx('mt-4 mb-2 lg:flex w-100 text-right', {
           hidden: !drawerOpen,
           'fixed right-0': drawerOpen,
         })}
@@ -58,17 +58,17 @@ function Menu({ scale }: { scale: boolean }) {
           </div>
           <div
             className={clx('transition duration-[1.5s]', {
-              'scale-[200%] -translate-x-[40%]': !scale,
+              'scale-[200%] translate-y-[100%] -translate-x-[100%]': !scale,
             })}
           >
-            <MenuItem selector="#section-1" color="blue">
-              Resolution-based
+            <MenuItem selector="#mission" color="blue">
+              Dramaturgy
             </MenuItem>
-            <MenuItem selector="#section-2" color="green">
-              Project-based
+            <MenuItem selector="#offer" color="green">
+              My offer
             </MenuItem>
-            <MenuItem selector="#section-3" color="red">
-              Time-based
+            <MenuItem selector="#contact" color="red">
+              Contact me
             </MenuItem>
           </div>
         </div>

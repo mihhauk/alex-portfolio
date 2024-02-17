@@ -1,5 +1,11 @@
 import clx from 'classnames';
-import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './components/ui/card';
 
 export function OfferCard({
   title,
@@ -15,16 +21,20 @@ export function OfferCard({
   className?: string;
 }) {
   return (
-    <Card className={clx('bg-gray-300  border-slate-300', className)}>
+    <Card
+      className={clx('flex flex-col bg-gray-300  border-slate-300', className)}
+    >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col">
-        <img className="w-full h-40 object-cover" src={photo}></img>
+      <CardContent className="flex flex-col grow">
+        <img className="w-full h-40 object-cover rounded-md" src={photo}></img>
         <div className="my-10">{children}</div>
-        <span className="text-xl bold ">{price}</span>
       </CardContent>
+      <CardFooter className="flex justify-end">
+        <span className="text-2xl font-bold align-self-end">{price}</span>
+      </CardFooter>
     </Card>
   );
 }

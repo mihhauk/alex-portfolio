@@ -73,11 +73,7 @@ export function ContactForm() {
   return (
     <Card className="p-2 bg-gray-300  border-slate-300 ">
       <Form {...form}>
-        <form
-          ref={formRef}
-          onSubmit={form.handleSubmit(onSubmit)}
-          // className="space-y-8"
-        >
+        <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)}>
           <CardHeader>
             <CardTitle>Contact me</CardTitle>
           </CardHeader>

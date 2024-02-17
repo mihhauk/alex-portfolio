@@ -4,11 +4,15 @@ import clx from 'classnames';
 
 import logo from '../src/assets/Axdt-Logo-White.svg';
 import portrait from '../src/assets/A-berlin-cape-1.webp';
+import photo1 from '../src/assets/photo-1.png';
+import photo2 from '../src/assets/photo-2.png';
+import photo3 from '../src/assets/photo-3.png';
 import { Section } from './Section';
 import throttle from 'lodash/throttle';
 import Menu from './Menu';
 import { ContactForm } from './ContactForm';
 import { Card } from './components/ui/card';
+import { OfferCard } from './OfferCard';
 
 function App() {
   const headerRef = useRef(null);
@@ -38,17 +42,17 @@ function App() {
     <div id="home" className="mx-auto max-w-screen-xl">
       <header className={clx('h-0 sticky top-0')}>
         <div
-          className={clx('flex justify-between items-start pt-10 bg-gray-950', {
-            'border-b-2 border-gray-900': scale,
+          className={clx('flex justify-between items-start pt-5', {
+            'bg-gray-950 border-b-2 border-gray-900': scale,
           })}
         >
           <ScrollIntoView
             selector="#home"
             className={clx(
-              'cursor-pointer mx-40 flex align-top h-32 transition duration-[1.5s]',
+              'cursor-pointer mx-40 flex align-top h-24 transition duration-[1.5s]',
               // 'translate-x-[200%] translate-y-[200%]',
               {
-                'translate-x-[30%] translate-y-[70%] scale-[250%]': !scale,
+                'translate-x-[20vw] translate-y-[50vh] scale-[500%]': !scale,
                 // 'scale-[0.2] scale-x-[0.5] -translate-y-[46%] -translate-x-1/3 ':
                 //   scale,
                 // 'scale-75 scale-x-150': !scale,
@@ -60,8 +64,9 @@ function App() {
           <Menu scale={scale} />
         </div>
       </header>
-      <div className={`h-screen flex items-end`}>
-        <span className="text-lg p-10 w-2/3 text-slate-500 mb-40">
+      {/* class="bg-[url('/img/hero-pattern.svg')]" */}
+      <div className={`h-screen bg-home-page bg-no-repeat bg-cover`}>
+        {/* <span className="text-lg p-10 w-2/3 text-slate-500 mb-40">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum a
           necessitatibus aut magnam inventore perferendis, expedita dignissimos,
           possimus ducimus cum mollitia id ab facere rerum aliquid, cumque ullam
@@ -82,13 +87,64 @@ function App() {
               // 'scale-75 scale-x-150': !scale,
             }
           )}
-        ></img>
+        ></img> */}
+      </div>
+      <div id="mission" className="flex flex-col mb-40 mt-10">
+        <h2 className="mx-auto text-8xl text-slate-100">My Mission</h2>
+        <p className="text-4xl text-slate-300 mt-10">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aut rem
+          sequi cumque odio, blanditiis, cupiditate ab optio dolores inventore
+          ducimus quia veniam fugit, iusto quisquam maiores harum explicabo
+          saepe. Aspernatur a deserunt blanditiis, laborum impedit asperiores
+          earum debitis aliquid error perspiciatis ut ratione? Magnam voluptatum
+          asperiores esse, delectus maxime nam tempora obcaecati aspernatur
+          dolorum excepturi voluptatem ut! Impedit, maxime.
+        </p>
+      </div>
+      <div id="offer" className="flex flex-col mb-5">
+        <h2 className="mx-auto text-8xl text-slate-100">My offer</h2>
+        <div className="grid lg:grid-cols-3 gap-10 p-10">
+          <OfferCard
+            title="Resolution based"
+            price="$100 per session"
+            photo={photo1}
+            className="lg:mb-10"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            eaque suscipit omnis cupiditate consectetur minima reprehenderit
+            adipisci autem, eius blanditiis eveniet nostrum quibusdam commodi.
+            Reiciendis maxime laborum consequuntur obcaecati doloribus.
+          </OfferCard>
+          <OfferCard
+            title="Project based"
+            price="$1000 per something"
+            photo={photo2}
+            className="lg:mt-10"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            eaque suscipit omni minima reprehenderit adipisci autem, eius
+            blanditiis evenmodi. Reiciendis maxime laborum consequuntur
+            obcaecati doloribus.
+          </OfferCard>
+          <OfferCard
+            title="Time based"
+            price="$20 per hour"
+            photo={photo3}
+            className="lg:mb-10"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            eaque suscipit omnis cuuntur obcaecati doloribus.
+          </OfferCard>
+        </div>
       </div>
 
-      <Section title="section-1" color="via-red-950"></Section>
+      {/* <Section title="section-1" color="via-red-950"></Section>
       <Section invert title="section-2" color="via-amber-950"></Section>
-      <Section title="section-3" color="via-red-950"></Section>
-      <div className="grid lg:grid-cols-2 auto-rows-min gap-10 p-20 h-1/2">
+      <Section title="section-3" color="via-red-950"></Section> */}
+      <div
+        id="contact"
+        className="grid lg:grid-cols-2 auto-rows-min gap-10 p-20 h-1/2"
+      >
         <Card>
           <img
             src={portrait}
