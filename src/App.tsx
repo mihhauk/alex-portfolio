@@ -7,7 +7,7 @@ import portrait from '../src/assets/A-berlin-cape-1.webp';
 import photo1 from '../src/assets/photo-1.png';
 import photo2 from '../src/assets/photo-2.png';
 import photo3 from '../src/assets/photo-3.png';
-import { Section } from './Section';
+// import { Section } from './Section';
 import throttle from 'lodash/throttle';
 import Menu from './Menu';
 import { ContactForm } from './ContactForm';
@@ -91,7 +91,7 @@ function App() {
       </div>
       <div id="mission" className="flex flex-col mb-40 mt-10">
         <h2 className="mx-auto text-8xl text-slate-100">My Mission</h2>
-        <p className="text-4xl text-slate-300 mt-10">
+        <p className="text-4xl text-slate-300 mt-10 mx-20 text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa aut rem
           sequi cumque odio, blanditiis, cupiditate ab optio dolores inventore
           ducimus quia veniam fugit, iusto quisquam maiores harum explicabo
