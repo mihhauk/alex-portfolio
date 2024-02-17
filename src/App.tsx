@@ -7,12 +7,12 @@ import portrait from '../src/assets/A-berlin-cape-1.webp';
 import { Section } from './Section';
 import throttle from 'lodash/throttle';
 import Menu from './Menu';
-import { Contact } from './Contact';
+import { ContactForm } from './ContactForm';
 
 function App() {
   const headerRef = useRef(null);
 
-  const [scale, setScale] = useState(false);
+  const [scale, setScale] = useState(window.scrollY > 50);
 
   useEffect(() => {
     // const debouncedFunction = debounce(originalFunction, waitMilliseconds, options);
@@ -87,7 +87,17 @@ function App() {
       <Section title="section-1" color="via-red-950"></Section>
       <Section invert title="section-2" color="via-amber-950"></Section>
       <Section title="section-3" color="via-red-950"></Section>
-      <Contact />
+      <div className="grid grid-cols-2 auto-rows-min gap-10 p-20 h-1/2">
+        <ContactForm />
+        <div className="max-h-min">
+          <img
+            src={portrait}
+            alt="portrait"
+            ref={headerRef}
+            className={clx('h-full w-full object-contain rounded-md')}
+          ></img>
+        </div>
+      </div>
 
       <footer className="flex">FOOTER</footer>
     </div>
