@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -29,7 +28,10 @@ import { useRef } from 'react';
 const formSchema = z.object({
   senderName: z.string().min(2).max(30),
   senderEmail: z.string().email(),
-  message: z.string().min(10).max(500),
+  message: z
+    .string()
+    .min(10, 'Must be at least 10 characters')
+    .max(500, 'Must be less than 500 characters'),
 });
 
 export function ContactForm() {
@@ -69,16 +71,15 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="p-2 bg-slate-600  border-slate-300">
+    <Card className="p-2 bg-gray-300  border-slate-300 ">
       <Form {...form}>
         <form
           ref={formRef}
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8"
+          // className="space-y-8"
         >
           <CardHeader>
             <CardTitle>Contact me</CardTitle>
-            <CardDescription>Card Description</CardDescription>
           </CardHeader>
           <CardContent>
             <FormField
